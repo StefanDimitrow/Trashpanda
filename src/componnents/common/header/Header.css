@@ -1,0 +1,8 @@
+.header {
+    display: flex;
+    justify-content: center;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    font-size: large;
+    text-align: center;
+  }

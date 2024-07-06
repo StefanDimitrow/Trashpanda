@@ -1,0 +1,28 @@
+.navbar {
+    margin-top: 15rem;
+    background-color: gray;
+    border-style: inherit;
+    border-color: black;
+    box-shadow: 0 5px 10px black;
+  }
+  
+  .navbar-content {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .navbar-btn {
+    padding: 15px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    border-color: black;
+    box-shadow: 0 5px 10px black;
+  }
+  
+  .navbar-btn:hover {
+    background-color: gray;
+    color: white;
+  }
