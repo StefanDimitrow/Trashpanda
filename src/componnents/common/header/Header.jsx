@@ -3,7 +3,7 @@ import './Header.css'
 
 function Header() {
   return (
-    <header class="header">
+    <header className="header">
       <h1>
         Welcome to Trashpanda! <br />
         Here you can find everything that you need! <br />

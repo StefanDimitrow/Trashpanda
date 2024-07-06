@@ -3,7 +3,7 @@ import './Footer.css'
 
 function Footer() {
   return (
-    <footer class="footer">
+    <footer className="footer">
       <div class="footer-content">
         <p>@Trashpanda@</p>
       </div>
