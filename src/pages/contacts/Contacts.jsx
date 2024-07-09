@@ -1,9 +1,10 @@
 import React from "react";
-import './Contacts.css'
+import styles from './Contacts.module.css'
 
 function Contacts(){
     return(
-        <div className="contacts-card">
+        <div className={styles.container}>
+            <div className={styles.card}>
             <article>
             <h1><b>Contacts</b></h1>
             <p><b>Email: </b>trashpanda@gmail.com</p>
@@ -11,6 +12,8 @@ function Contacts(){
             <p><b>Facebook Page: </b> Trashpanda</p>
             <p><b>Creator: </b> https://github.com/StefanDimitrow</p>
             </article>
+            </div>
+            
         </div>
     )
 }

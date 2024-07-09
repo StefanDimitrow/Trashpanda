@@ -5,7 +5,7 @@ import Header from "./componnents/common/header/Header";
 import Footer from "./componnents/common/footer/Footer";
 import Home from "./componnents/layouts/home/Home";
 import About from "./pages/about/About";
-import Contacts from "./componnents/layouts/contacts/Contacts";
+import Contacts from "./pages/contacts/Contacts";
 import Navigation from "./componnents/layouts/navbar/Navbar";
 import Register from "./pages/authentication/Register";
 import Login from "./pages/authentication/Login";
