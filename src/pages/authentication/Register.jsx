@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styles from './Authentication.module.css'
+import Submit from "../../componnents/UI/buttons/submit/Submit";
 
 function Register() {
   return (
@@ -25,9 +26,7 @@ function Register() {
         <Form.Label>Repeat Password: </Form.Label>
         <Form.Control type="repassword" placeholder="Repeat Password" />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <Submit></Submit>
     </Form>
     </div>
     

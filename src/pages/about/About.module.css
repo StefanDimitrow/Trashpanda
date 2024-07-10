@@ -1,12 +1,15 @@
 .about {
-    margin: 2rem;
+    margin: 5rem;
     padding: 2rem;
-    background-color: lightslategray;
+    background-color: rgba(240, 242, 245, 0.8);
     border-style: inset;
     border-color: black;
     border-radius: 1rem;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-style: italic;
     line-height: 2rem;
-    font-size: 25px;
+    font-size: 23px;
   }
+.section{
+  padding:2rem;
+}
