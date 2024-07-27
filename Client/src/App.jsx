@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,6 +12,7 @@ import Register from "./pages/authentication/Register";
 import Login from "./pages/authentication/Login";
 
 function App() {
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -21,7 +23,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="register" element={<Register />} />
-          <Route path='login' element={<Login />} />
+          <Route path="login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>
