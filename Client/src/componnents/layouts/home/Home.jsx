@@ -1,10 +1,10 @@
-import React from "react";
-import './Home.css'
+import React, { useRef } from "react";
+import "./Home.css";
 
 function Home() {
   return (
     <main className="main">
-      <div class="main-wrapper">
+      <div className="main-wrapper">
         <article className="article-main">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
           cupiditate ad atque inventore nisi cum modi, corporis iste itaque
@@ -15,7 +15,7 @@ function Home() {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt
           minima laboriosam illo. Vitae harum aperiam est placeat, veritatis
           pariatur eius totam consectetur voluptatibus laborum odit dolorum nam
-          minima laboriosam nihil!
+          / minima laboriosam nihil!
         </section>
       </div>
     </main>
