@@ -9,6 +9,8 @@ import Contacts from "./pages/contacts/Contacts";
 import Navigation from "./componnents/layouts/navbar/Navbar";
 import Register from "./pages/authentication/Register";
 import Login from "./pages/authentication/Login";
+import Profile from "./pages/profile/Profile";
+import JunkCollection from "./pages/junk-collection/JunkCollection"
 
 function App() {
   
@@ -23,6 +25,8 @@ function App() {
           <Route path="contacts" element={<Contacts />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="junk-collection" element={<JunkCollection />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import Form from "react-bootstrap/Form";
 import styles from './Authentication.module.css';
 import Submit from "../../componnents/UI/buttons/submit/Submit";
@@ -25,11 +25,13 @@ const Register = () => {
     try {
       // Create a new user
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log("User created:", userCredential.user);
-      
-      // After successful registration, sign in the user
-      await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
+      // Update the user's profile with the display name
+      await updateProfile(user, { displayName: username });
+
+      console.log("User created:", user);
+      
       // Redirect to the Junk Collection page
       navigate('/junk-collection');
     } catch (error) {
