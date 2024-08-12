@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import Form from "react-bootstrap/Form";
 import styles from './Authentication.module.css';
 import Submit from "../../componnents/UI/buttons/submit/Submit";
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ const Register = () => {
   const [rePassword, setRePassword] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -21,11 +23,16 @@ const Register = () => {
     }
 
     try {
+      // Create a new user
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log("User created:", userCredential.user);
-      // You can now use the username and attach it to the user in your database if needed
+      
+      // After successful registration, sign in the user
+      await signInWithEmailAndPassword(auth, email, password);
+
+      // Redirect to the Junk Collection page
+      navigate('/junk-collection');
     } catch (error) {
-      setError(error.message);
       handleFirebaseError(error.code);
     }
   };
@@ -96,3 +103,4 @@ const Register = () => {
 };
 
 export default Register;
+
