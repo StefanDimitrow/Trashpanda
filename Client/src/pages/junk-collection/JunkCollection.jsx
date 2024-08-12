@@ -1,5 +1,3 @@
-// src/pages/junk-collection/JunkCollection.jsx
-
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase"; // Import your firebase configuration
 import { collection, getDocs } from "firebase/firestore";
@@ -30,8 +28,11 @@ const JunkCollection = () => {
           items.map(item => (
             <div key={item.id} className={styles.item}>
               <h2>{item.name}</h2>
+              {item.imageUrl && (
+                <img src={item.imageUrl} alt={item.name} className={styles.itemImage} />
+              )}
               <p>{item.description}</p>
-              <p>Price: ${item.price}</p>
+              <p>Category: {item.category}</p>
             </div>
           ))
         ) : (

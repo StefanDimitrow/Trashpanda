@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db, storage } from "../../firebase";
+import { db, storage } from "../../firebase"; // Ensure these are imported correctly
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Form from "react-bootstrap/Form";
@@ -12,7 +12,6 @@ const categories = ["Electronics", "Furniture", "Clothing", "Toys", "Books", "Ot
 const AddJunk = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
   const [category, setCategory] = useState(categories[0]);
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
@@ -42,13 +41,13 @@ const AddJunk = () => {
       await addDoc(collection(db, "junk"), {
         name,
         description,
-        price: parseFloat(price),
         category,
         imageUrl,
       });
 
       navigate('/junk-collection'); // Redirect after successful addition
     } catch (error) {
+      console.error("Failed to add item: ", error);
       setError("Failed to add item. Please try again.");
     }
   };
@@ -75,16 +74,6 @@ const AddJunk = () => {
             placeholder="Enter a description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPrice">
-          <Form.Label>Price:</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Enter price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
             required
           />
         </Form.Group>
@@ -118,3 +107,4 @@ const AddJunk = () => {
 };
 
 export default AddJunk;
+
