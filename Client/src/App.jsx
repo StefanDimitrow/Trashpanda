@@ -11,6 +11,7 @@ import Register from "./pages/authentication/Register";
 import Login from "./pages/authentication/Login";
 import Profile from "./pages/profile/Profile";
 import JunkCollection from "./pages/junk-collection/JunkCollection"
+import AddJunk from "./pages/add-junk/AddJunk"
 
 function App() {
   
@@ -27,6 +28,8 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
           <Route path="junk-collection" element={<JunkCollection />} />
+          <Route path="add-junk" element={<AddJunk />} />
+          
         </Routes>
         <Footer />
       </BrowserRouter>

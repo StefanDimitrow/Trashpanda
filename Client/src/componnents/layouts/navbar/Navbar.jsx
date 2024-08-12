@@ -53,6 +53,7 @@ const Navigation = React.memo(() => {
             {/* Links only for authenticated users */}
             {user ? (
               <>
+              <Nav.Link href="add-junk">Add Junk</Nav.Link>
                 <Nav.Link href="/profile">Profile</Nav.Link>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
               </>
