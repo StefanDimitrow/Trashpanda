@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+// src/App.jsx or src/App.js
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./componnents/common/header/Header";
@@ -10,11 +11,11 @@ import Navigation from "./componnents/layouts/navbar/Navbar";
 import Register from "./pages/authentication/Register";
 import Login from "./pages/authentication/Login";
 import Profile from "./pages/profile/Profile";
-import JunkCollection from "./pages/junk-collection/JunkCollection"
-import AddJunk from "./pages/add-junk/AddJunk"
+import JunkCollection from "./pages/junk-collection/JunkCollection";
+import AddJunk from "./pages/add-junk/AddJunk";
+import Details from "./pages/details/Details"; // Import Details component
 
 function App() {
-  
   return (
     <div className="App">
       <BrowserRouter>
@@ -29,7 +30,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="junk-collection" element={<JunkCollection />} />
           <Route path="add-junk" element={<AddJunk />} />
-          
+          <Route path="details/:id" element={<Details />} /> {/* Add this route */}
         </Routes>
         <Footer />
       </BrowserRouter>
