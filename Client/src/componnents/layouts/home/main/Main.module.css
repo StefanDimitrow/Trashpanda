@@ -1,0 +1,52 @@
+/* src/pages/home/main/Main.module.css */
+.latestJunkItems {
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent for readability */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px; /* Space below the main section */
+}
+
+.itemsList {
+  display: flex; /* Use flexbox layout */
+  flex-direction: row; /* Align items horizontally in a row */
+  gap: 20px; /* Space between items */
+  justify-content: center; /* Center items horizontally */
+  flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+  margin-top: 20px; /* Space above the item list */
+}
+
+.item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  width: 180px; /* Adjust width for better item display */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  background-color: #fff; /* White background for items */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Center text within items */
+}
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+.itemImage {
+  width: 100%;
+  height: 120px; /* Increased height for better image display */
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.itemTitle {
+  font-size: 18px; /* Increased font size for better readability */
+  margin: 10px 0;
+}
+
+.itemPrice {
+  margin: 5px 0;
+  font-size: 14px; /* Adjusted font size for better readability */
+}
+

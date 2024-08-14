@@ -30,7 +30,6 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="junk-collection" element={<JunkCollection />} />
           <Route path="add-junk" element={<AddJunk />} />
-          <Route path="details/:id" element={<Details />} /> {/* Add this route */}
         </Routes>
         <Footer />
       </BrowserRouter>

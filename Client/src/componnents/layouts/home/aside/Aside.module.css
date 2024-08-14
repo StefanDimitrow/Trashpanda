@@ -1,0 +1,21 @@
+/* src/pages/home/aside/Aside.module.css */
+.card {
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent for readability */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.cardTitle {
+  font-size: 24px; /* Adjust title font size */
+  margin-bottom: 15px;
+}
+
+.cardContent {
+  font-size: 16px; /* Adjust content font size */
+  line-height: 1.5; /* Improve readability */
+}
+
+
+  

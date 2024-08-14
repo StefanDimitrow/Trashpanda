@@ -1,0 +1,26 @@
+/* src/components/RedirectCollection.module.css */
+.redirectButton {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .redirectButton:hover {
+    background-color: #0056b3; /* Darker shade of blue for hover effect */
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    align-items: center; /* Center the button vertically (if container has height) */
+    height: 100%; /* Make sure container has height, or set to a specific height */
+    margin-top: 20px; /* Add margin for spacing if needed */
+  }
+  
+  
+  
