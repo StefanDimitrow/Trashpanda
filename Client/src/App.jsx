@@ -13,6 +13,7 @@ import Login from "./pages/authentication/Login";
 import Profile from "./pages/profile/Profile";
 import JunkCollection from "./pages/junk-collection/JunkCollection";
 import AddJunk from "./pages/add-junk/AddJunk";
+import LookingToBuy from "./pages/buyJunk/BuyJunk";
 import PrivateRoute from "./services/guards/PrivateRoute";
 import PublicRoute from "./services/guards/PublicRoute";
 import { AuthProvider } from "./services/guards/AuthContext";
@@ -32,6 +33,7 @@ function App() {
           <Route path="profile" element={<PrivateRoute element={Profile} />} />
           <Route path="junk-collection" element={<PrivateRoute element={JunkCollection} />} />
           <Route path="add-junk" element={<PrivateRoute element={AddJunk} />} />
+          <Route path="looking-to-buy" element={<PrivateRoute element={LookingToBuy} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

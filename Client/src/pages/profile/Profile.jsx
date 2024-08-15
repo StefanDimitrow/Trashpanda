@@ -38,11 +38,16 @@ const Profile = () => {
   }, [user]);
 
   const handleDelete = async (id) => {
-    try {
-      await deleteDoc(doc(db, "junk", id));
-      setJunkItems(junkItems.filter((item) => item.id !== id));
-    } catch (error) {
-      console.error("Error deleting junk item: ", error);
+    // Show a confirmation dialog before deleting the item
+    const confirmDelete = window.confirm("Are you sure you want to delete this junk item?");
+  
+    if (confirmDelete) {
+      try {
+        await deleteDoc(doc(db, "junk", id)); // Delete the item from the database
+        setJunkItems(junkItems.filter((item) => item.id !== id)); // Remove it from the state
+      } catch (error) {
+        console.error("Error deleting junk item: ", error);
+      }
     }
   };
 

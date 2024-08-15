@@ -46,7 +46,7 @@ const Navigation = React.memo(() => {
             {/* Links available to all users */}
             <Nav.Link href="/junk-collection">Junk Collection</Nav.Link>
             <NavDropdown title="Offers" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/buy">Buy Offers</NavDropdown.Item>
+              <NavDropdown.Item href="/looking-to-buy">Buy Offers</NavDropdown.Item>
               <NavDropdown.Item href="/sell">Sell Offers</NavDropdown.Item>
             </NavDropdown>
 

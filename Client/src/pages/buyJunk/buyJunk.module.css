@@ -1,0 +1,91 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Main content wrapped in a transparent white div */
+.transparentDiv {
+  background-color: rgba(255, 255, 255, 0.8); /* White transparent background */
+  border: 2px solid black; /* Black border */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.postForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px; /* Space between the button and form */
+}
+
+input, textarea {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Button to toggle form visibility */
+.showFormButton {
+  padding: 10px;
+  background-color: black; /* Black button */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px; /* Space between the button and posts section */
+}
+
+.showFormButton:hover {
+  background-color: gray; /* Gray hover effect */
+  color: black; /* Switch to black text */
+}
+
+/* Button styling: black background, white text, with gray hover effect */
+.submitButton {
+  padding: 10px;
+  background-color: black; /* Black button */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: gray; /* Gray hover effect */
+  color: black; /* Switch to black text */
+}
+
+.postsSection {
+  margin-top: 40px;
+}
+
+.postsList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.postItem {
+  border: 1px solid black; /* Black border around posts */
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: white; /* Solid white background for each post */
+}
+
+.postItem h4 {
+  margin: 0 0 10px;
+}
+
+.postItem p {
+  margin: 5px 0;
+}
