@@ -47,7 +47,7 @@ const Navigation = React.memo(() => {
             <Nav.Link href="/junk-collection">Junk Collection</Nav.Link>
             <NavDropdown title="Offers" id="basic-nav-dropdown">
               <NavDropdown.Item href="/looking-to-buy">Buy Offers</NavDropdown.Item>
-              <NavDropdown.Item href="/sell">Sell Offers</NavDropdown.Item>
+              <NavDropdown.Item href="/looking-to-sell">Sell Offers</NavDropdown.Item>
             </NavDropdown>
 
             {/* Links only for authenticated users */}

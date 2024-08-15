@@ -17,6 +17,7 @@ import LookingToBuy from "./pages/buyJunk/BuyJunk";
 import PrivateRoute from "./services/guards/PrivateRoute";
 import PublicRoute from "./services/guards/PublicRoute";
 import { AuthProvider } from "./services/guards/AuthContext";
+import LookingToSell from "./pages/sellJunk/SellJunk";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="junk-collection" element={<PrivateRoute element={JunkCollection} />} />
           <Route path="add-junk" element={<PrivateRoute element={AddJunk} />} />
           <Route path="looking-to-buy" element={<PrivateRoute element={LookingToBuy} />} />
+          <Route path="looking-to-sell" element={<PrivateRoute element={LookingToSell} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

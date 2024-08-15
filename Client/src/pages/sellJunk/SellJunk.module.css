@@ -1,0 +1,92 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.transparentDiv {
+  background-color: rgba(255, 255, 255, 0.8); /* White transparent background */
+  border: 2px solid black; /* Black border */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333; /* Darker text color for better readability */
+}
+
+.postForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box; /* Ensure padding is included in width/height */
+}
+
+input:focus, textarea:focus {
+  border-color: #333;
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); /* Subtle shadow on focus */
+}
+
+.showFormButton, .submitButton {
+  padding: 12px 20px;
+  background-color: black; /* Black button */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 20px; /* Space between the button and posts section */
+}
+
+.showFormButton:hover, .submitButton:hover {
+  background-color: gray; /* Gray hover effect */
+  color: black; /* Switch to black text */
+}
+
+.postsSection {
+  margin-top: 30px;
+}
+
+.postsList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.postItem {
+  border: 1px solid black; /* Black border around posts */
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background-color: white; /* Solid white background for each post */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.postItem h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #333; /* Darker text color for better readability */
+}
+
+.postItem p {
+  margin: 5px 0;
+  color: #555; /* Slightly lighter text color for paragraphs */
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-top: 20px;
+}
