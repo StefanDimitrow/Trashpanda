@@ -1,59 +1,54 @@
-/* src/pages/profile/Profile.module.css */
-
 .container {
   padding: 20px;
   margin: 40px auto;
   max-width: 1200px;
-  background-color: rgba(240, 242, 245, 0.8); /* Slightly transparent background */
+  background-color: rgba(240, 242, 245, 0.8); /* Light background with transparency */
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile {
+  margin-bottom: 30px; /* Increased margin below profile section */
   text-align: center;
-  max-width: 1200px;
-  width: 100%;
+  border: 1px solid #ccc;
   padding: 20px;
-  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  background-color: rgba(240, 242, 245, 0.8); /* Consistent background */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
 }
 
 .userInfo {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  line-height: 1.6; /* Improve readability */
+  font-size: 16px; /* Adjusted font size */
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #333; /* Darker text color for contrast */
+.junkHeading,
+.buyHeading {
+  margin-top: 20px; /* Margin above headings */
+  margin-bottom: 10px; /* Margin below headings */
+  font-size: 22px; /* Increased font size for headings */
+  border-bottom: 2px solid #ccc; /* Underline the heading */
+  padding-bottom: 10px; /* Padding below heading */
+  text-align: center; /* Centered heading text */
 }
 
-.junkHeading {
-  margin: 40px 0 20px;
-  font-size: 1.8rem;
-  text-align: center;
-  color: #333; /* Darker color for headings */
-}
-
-.junkItems {
+.junkItems,
+.buyPosts {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 20px; /* Space between items */
   justify-content: center;
 }
 
-.junkItem {
+.junkItem,
+.buyPost {
   border: 1px solid #ccc;
   padding: 20px;
-  width: 250px; /* Consistent width for items */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+  width: 300px; /* Increased width for larger cards */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  background-color: rgba(240, 242, 245, 0.8); /* Consistent background */
+  background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -62,57 +57,51 @@ h2 {
 
 .junkImage {
   width: 100%;
-  height: 200px; /* Fixed height for images */
-  object-fit: cover; /* Ensure image covers container without distortion */
-  margin-bottom: 10px;
+  height: 220px; /* Increased height for better image display */
+  object-fit: cover;
+  margin-bottom: 15px; /* Increased margin below image */
   border-radius: 5px;
 }
 
-.junkItemContent {
-  width: 100%;
+h3 {
+  font-size: 18px; /* Adjusted font size */
+  margin-bottom: 8px; /* Margin below item name */
 }
 
-.junkItem h3 {
-  font-size: 1.2rem; /* Adjusted for consistency */
-  margin-bottom: 8px;
-  color: #333; /* Darker color for better readability */
+p {
+  margin: 5px 0; /* Increased margin for better readability */
 }
 
-.junkItem p {
-  margin: 3px 0;
-  color: #666; /* Lighter text color for paragraphs */
-  line-height: 1.4; /* Improved line height for readability */
-}
-
-.noItemsMessage {
-  margin-top: 20px;
-  color: #888; /* Lighter color for no items message */
-  text-align: center;
-}
-
-.editButton, .deleteButton {
-  padding: 8px 12px;
+.editButton,
+.deleteButton {
+  margin-top: 10px; /* Margin above buttons */
+  padding: 10px 15px; /* Increased padding */
   border: none;
-  border-radius: 4px;
+  border-radius: 5px; /* Rounded corners */
   cursor: pointer;
-  margin-right: 10px; /* Space between buttons */
-  color: #fff; /* White text */
+  font-size: 16px; /* Increased font size */
 }
 
 .editButton {
-  background-color: #007bff; /* Primary button color */
+  background-color: #6c757d; /* Gray background */
+  color: white;
 }
 
 .editButton:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #5a6268; /* Darker gray on hover */
 }
 
 .deleteButton {
-  background-color: #dc3545; /* Danger button color */
+  background-color: #dc3545; /* Red background */
+  color: white;
 }
 
 .deleteButton:hover {
-  background-color: #c82333; /* Darker shade on hover */
+  background-color: #c82333; /* Darker red on hover */
 }
 
-
+.noItemsMessage {
+  margin-top: 20px; /* Increased margin above no items message */
+  color: #888; /* Light gray color for the message */
+  font-style: italic; /* Italicize the message */
+}
