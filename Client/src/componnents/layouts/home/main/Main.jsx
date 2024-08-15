@@ -6,9 +6,7 @@ import styles from './Main.module.css'; // Import CSS module for styling
 const Main = ({ items }) => {
   const navigate = useNavigate();
 
-  const handleItemClick = (itemId) => {
-    navigate(`/details/${itemId}`);
-  };
+  
 
   return (
     <div className={styles.latestJunkItems}>
@@ -16,7 +14,7 @@ const Main = ({ items }) => {
       <div className={styles.itemsList}>
         {items.length > 0 ? (
           items.map(item => (
-            <div key={item.id} className={styles.item} onClick={() => handleItemClick(item.id)}>
+            <div key={item.id} className={styles.item}>
               <img src={item.imageUrl} alt={item.name} className={styles.itemImage} />
               <h2 className={styles.itemTitle}>{item.name}</h2>
               <p className={styles.itemPrice}>Price: ${item.price}</p>
