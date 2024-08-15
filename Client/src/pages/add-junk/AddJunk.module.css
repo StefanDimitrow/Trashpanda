@@ -1,20 +1,56 @@
 /* src/pages/add-junk/AddJunk.module.css */
 
 .container {
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  background-color: #f5f7fa; /* Light background color for the container */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for better depth */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333; /* Darker color for better readability */
+}
+
+.imagePreview {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.currentImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Rounded corners for the image */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for the image */
+}
+
+.text-danger {
+  color: #d9534f; /* Red color for error messages */
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+      padding: 15px;
   }
-  
+
   .form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 15px;
   }
-  
+
   h1 {
-    text-align: center;
-    margin-bottom: 20px;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
   }
-  
+}

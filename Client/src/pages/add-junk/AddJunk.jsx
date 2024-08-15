@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db, storage, auth } from "../../firebase"; // Ensure these are imported correctly
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import styles from './AddJunk.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const categories = ["Electronics", "Furniture", "Clothing", "Toys", "Books", "Other"];
 
@@ -14,15 +14,36 @@ const AddJunk = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(categories[0]);
   const [image, setImage] = useState(null);
-  const [price, setPrice] = useState(""); // New state for price
-  const [additionalInfo, setAdditionalInfo] = useState(""); // New state for additional info
-  const [mobileNumber, setMobileNumber] = useState(""); // New state for mobile number
+  const [imageUrl, setImageUrl] = useState(""); // State to handle current image URL
+  const [price, setPrice] = useState("");
+  const [additionalInfo, setAdditionalInfo] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
   const [error, setError] = useState(null);
+  const [editingItemId, setEditingItemId] = useState(null); // State for editing item ID
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Initialize the state with data from location if editing
+  useEffect(() => {
+    const { state } = location;
+    if (state && state.item) {
+      const { item } = state;
+      console.log("Editing Item Data:", item); // Debugging
+      setName(item.name);
+      setDescription(item.description);
+      setCategory(item.category);
+      setPrice(item.price);
+      setAdditionalInfo(item.additionalInfo);
+      setMobileNumber(item.mobileNumber);
+      setImageUrl(item.imageUrl); // Set the current image URL
+      setEditingItemId(item.id); // Set the editing item ID
+    }
+  }, [location]);
 
   const handleImageChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
+      console.log("Selected Image File:", e.target.files[0]); // Debugging
     }
   };
 
@@ -31,41 +52,61 @@ const AddJunk = () => {
     setError(null);
 
     try {
-      let imageUrl = "";
+      let newImageUrl = imageUrl; // Default to existing image URL
 
       if (image) {
-        // Upload the image to Firebase Storage
+        // Upload the new image to Firebase Storage
         const imageRef = ref(storage, `images/${image.name}`);
         await uploadBytes(imageRef, image);
-        imageUrl = await getDownloadURL(imageRef);
+        newImageUrl = await getDownloadURL(imageRef); // Get URL of the new image
+        console.log("New Image URL:", newImageUrl); // Debugging
       }
 
-      // Get the current user's username
       const username = auth.currentUser.displayName || "Anonymous";
 
-      // Add a new document with the item details
-      await addDoc(collection(db, "junk"), {
-        name,
-        description,
-        category,
-        price, // Store the price
-        additionalInfo, // Store additional info
-        mobileNumber, // Store mobile number
-        imageUrl,
-        username, // Store the username
-      });
+      if (editingItemId) {
+        // Update existing item
+        const itemRef = doc(db, "junk", editingItemId);
+        await updateDoc(itemRef, {
+          name,
+          description,
+          category,
+          price,
+          additionalInfo,
+          mobileNumber,
+          imageUrl: newImageUrl, // Update to new image URL if changed
+          username,
+        });
+      } else {
+        // Add new item
+        await addDoc(collection(db, "junk"), {
+          name,
+          description,
+          category,
+          price,
+          additionalInfo,
+          mobileNumber,
+          imageUrl: newImageUrl, // Add with new image URL
+          username,
+        });
+      }
 
-      navigate('/junk-collection'); // Redirect after successful addition
+      navigate('/junk-collection'); // Redirect after successful operation
     } catch (error) {
-      console.error("Failed to add item: ", error);
-      setError("Failed to add item. Please try again.");
+      console.error("Failed to save item: ", error);
+      setError("Failed to save item. Please try again.");
     }
   };
 
   return (
     <div className={styles.container}>
-      <h1>Add New Junk Item</h1>
+      <h1>{editingItemId ? "Edit Junk Item" : "Add New Junk Item"}</h1>
       <Form onSubmit={handleSubmit} className={styles.form}>
+        {imageUrl && !image && ( // Display current image if available and no new image is selected
+          <div className={styles.imagePreview}>
+            <img src={imageUrl} alt="Current preview" className={styles.currentImage} />
+          </div>
+        )}
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Name:</Form.Label>
           <Form.Control
@@ -139,7 +180,7 @@ const AddJunk = () => {
         </Form.Group>
         {error && <p className="text-danger">{error}</p>}
         <Button variant="primary" type="submit">
-          Add Item
+          {editingItemId ? "Update Item" : "Add Item"}
         </Button>
       </Form>
     </div>
