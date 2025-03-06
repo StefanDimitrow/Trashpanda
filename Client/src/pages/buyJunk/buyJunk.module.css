@@ -91,3 +91,32 @@ input:focus, textarea:focus {
   margin-top: 20px;
 }
 
+/* Add styles for the delete and update buttons */
+.deleteButton, .updateButton {
+  padding: 8px 15px;
+  background-color: red; /* Red button for delete */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-right: 10px; /* Space between buttons */
+}
+
+.updateButton {
+  background-color: blue; /* Blue button for update */
+}
+
+.deleteButton:hover, .updateButton:hover {
+  background-color: darkred; /* Dark red hover effect for delete */
+  color: white; /* Keep white text */
+}
+
+.updateButton:hover {
+  background-color: darkblue; /* Dark blue hover effect for update */
+}
+
+.postItem button {
+  margin-top: 10px; /* Space between buttons and post content */
+}
+

@@ -60,10 +60,11 @@ const SellJunk = () => {
           mobileNumber: newPost.mobileNumber,
           additionalInfo: newPost.additionalInfo,
           username: currentUser.displayName || "Anonymous",
+          ownerId: currentUser.uid, // Add ownerId
         };
 
-        await addDoc(collection(db, "lookingToSell"), sellPostData);
-        setPosts([...posts, sellPostData]);
+        const docRef = await addDoc(collection(db, "lookingToSell"), sellPostData);
+        setPosts([...posts, { id: docRef.id, ...sellPostData }]);
         setNewPost({
           item: "",
           description: "",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db, auth } from "../../firebase";
-import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import styles from "./buyJunk.module.css";
 
 const LookingToBuy = () => {
@@ -12,6 +12,8 @@ const LookingToBuy = () => {
   });
   const [showForm, setShowForm] = useState(false); // State to control form visibility
   const [loading, setLoading] = useState(true); // State for loading status
+  const [submitting, setSubmitting] = useState(false); // State for form submission
+  const [editingPostId, setEditingPostId] = useState(null); // State to track the post being edited
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -53,10 +55,12 @@ const LookingToBuy = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newPost.item && newPost.description && newPost.contact) {
+      setSubmitting(true);
       try {
         const currentUser = auth.currentUser;
         if (!currentUser) {
           console.error("No user is currently authenticated.");
+          setSubmitting(false);
           return;
         }
 
@@ -67,14 +71,42 @@ const LookingToBuy = () => {
           ownerId: currentUser.uid,
         };
 
-        await addDoc(collection(db, "lookingToBuy"), buyPostData);
-        setPosts([...posts, buyPostData]);
+        if (editingPostId) {
+          await updateDoc(doc(db, "lookingToBuy", editingPostId), buyPostData);
+          setPosts(posts.map(post => post.id === editingPostId ? { id: editingPostId, ...buyPostData } : post));
+          setEditingPostId(null);
+        } else {
+          const docRef = await addDoc(collection(db, "lookingToBuy"), buyPostData);
+          setPosts([...posts, { id: docRef.id, ...buyPostData }]);
+        }
+
         setNewPost({ item: "", description: "", contact: "" });
         setShowForm(false);
       } catch (error) {
-        console.error("Error adding post: ", error);
+        console.error("Error adding/updating post: ", error);
+      } finally {
+        setSubmitting(false);
       }
     }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, "lookingToBuy", id));
+      setPosts(posts.filter(post => post.id !== id));
+    } catch (error) {
+      console.error("Error deleting post: ", error);
+    }
+  };
+
+  const handleEdit = (post) => {
+    setNewPost({
+      item: post.item,
+      description: post.description,
+      contact: post.contact,
+    });
+    setEditingPostId(post.id);
+    setShowForm(true);
   };
 
   if (loading) {
@@ -86,7 +118,11 @@ const LookingToBuy = () => {
       <div className={styles.transparentDiv}>
         <button
           className={styles.showFormButton}
-          onClick={() => setShowForm(!showForm)}
+          onClick={() => {
+            setShowForm(!showForm);
+            setNewPost({ item: "", description: "", contact: "" });
+            setEditingPostId(null);
+          }}
         >
           {showForm ? "Close" : "Post an Offer"}
         </button>
@@ -116,8 +152,8 @@ const LookingToBuy = () => {
               onChange={handleInputChange}
               required
             />
-            <button type="submit" className={styles.submitButton}>
-              Submit
+            <button type="submit" className={styles.submitButton} disabled={submitting}>
+              {submitting ? "Submitting..." : editingPostId ? "Update" : "Submit"}
             </button>
           </form>
         )}
@@ -131,6 +167,8 @@ const LookingToBuy = () => {
                   <h4>{post.item}</h4>
                   <p>{post.description}</p>
                   <p>Contact: {post.contact}</p>
+                  <button className={styles.deleteButton} onClick={() => handleDelete(post.id)}>Delete</button>
+                  <button className={styles.updateButton} onClick={() => handleEdit(post)}>Update</button>
                 </li>
               ))
             ) : (
