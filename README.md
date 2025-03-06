@@ -27,17 +27,6 @@ cd trashpanda/Client
 npm install
 ```
 
-3. Create a `.env` file in the `Client` directory and add your Firebase configuration:
-
-```env
-VITE_FIREBASE_API_KEY=your-api-key
-VITE_FIREBASE_AUTH_DOMAIN=your-auth-domain
-VITE_FIREBASE_PROJECT_ID=your-project-id
-VITE_FIREBASE_STORAGE_BUCKET=your-storage-bucket
-VITE_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
-VITE_FIREBASE_APP_ID=your-app-id
-```
-
 ## Usage
 
 1. Start the development server:
@@ -105,5 +94,4 @@ Client/
 ## License
 
 This project is licensed under the MIT License.
-```
 
